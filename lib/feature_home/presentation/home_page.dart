@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smart_lighting/feature_home/presentation/components/led_bulb.dart';
+import 'package:smart_lighting/feature_home/presentation/components/led_intensity_section.dart';
 import 'package:smart_lighting/feature_home/presentation/components/led_toggles_section.dart';
 
 import 'components/lamp.dart';
@@ -37,11 +38,13 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               //  toggles
-              LedTogglesSection()
+              LedTogglesSection(),
 
               //  lamp
+              Expanded(child: Text("Hey")),
 
               //  slider
+              LedIntensitySection()
             ],
           ),
         )),
