@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:slider_button/slider_button.dart';
+import 'package:smart_lighting/theme/colors.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class LedLampSection extends StatefulWidget {
   const LedLampSection({super.key});
@@ -13,7 +16,32 @@ class _LedLampSectionState extends State<LedLampSection> {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      color: Colors.red,
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          //  switch
+          RotatedBox(
+            quarterTurns: 3,
+            child: ToggleSwitch(
+              minHeight: 50,
+              minWidth: 60,
+              radiusStyle: true,
+              cornerRadius: 100,
+              animationDuration: 3000,
+              inactiveBgColor: Theme.of(context).primaryColorDark,
+              activeBgColor: [Theme.of(context).primaryColor],
+              activeFgColor: Theme.of(context).scaffoldBackgroundColor,
+              totalSwitches: 2,
+              icons: const [
+                Icons.power_settings_new_rounded,
+                Icons.settings_power_rounded,
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
