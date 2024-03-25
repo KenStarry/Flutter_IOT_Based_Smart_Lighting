@@ -41,6 +41,7 @@ dependencies:
   slider_button: ^2.1.0
   toggle_switch: ^2.2.3
   flutter_svg: ^2.0.10+1
+  firebase_core: ^2.27.0
 
 dev_dependencies:
   flutter_test:
