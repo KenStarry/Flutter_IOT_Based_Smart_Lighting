@@ -30,7 +30,7 @@ class _LedIntensitySectionState extends State<LedIntensitySection> {
       max: 255.0,
       initialValue: 255.0,
       appearance: CircularSliderAppearance(
-          size: 250,
+          size: 300,
           animationEnabled: true,
           startAngle: 180,
           angleRange: 180,
@@ -68,20 +68,25 @@ class _LedIntensitySectionState extends State<LedIntensitySection> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 //  minus
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Theme.of(context).scaffoldBackgroundColor,
-                      border: Border.all(
-                        color: Colors.white.withOpacity(0.2),
-                        width: 1,
-                      )),
-                  child: const Center(
-                    child: Icon(
-                      Icons.remove_rounded,
-                      color: textWhite500,
+                GestureDetector(
+                  onTap: (){
+                    //  subtract overall value from either low, medium or high
+                  },
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        border: Border.all(
+                          color: Colors.white.withOpacity(0.2),
+                          width: 1,
+                        )),
+                    child: const Center(
+                      child: Icon(
+                        Icons.remove_rounded,
+                        color: textWhite500,
+                      ),
                     ),
                   ),
                 ),
@@ -109,20 +114,25 @@ class _LedIntensitySectionState extends State<LedIntensitySection> {
                 ),
 
                 // add icon
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Theme.of(context).scaffoldBackgroundColor,
-                      border: Border.all(
-                        color: Colors.white.withOpacity(0.2),
-                        width: 1,
-                      )),
-                  child: const Center(
-                    child: Icon(
-                      Icons.add_rounded,
-                      color: textWhite500,
+                GestureDetector(
+                  onTap: (){
+                    //  add overall value from either low, medium or high
+                  },
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        border: Border.all(
+                          color: Colors.white.withOpacity(0.2),
+                          width: 1,
+                        )),
+                    child: const Center(
+                      child: Icon(
+                        Icons.add_rounded,
+                        color: textWhite500,
+                      ),
                     ),
                   ),
                 ),

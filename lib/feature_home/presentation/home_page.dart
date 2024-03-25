@@ -46,12 +46,12 @@ class _HomePageState extends State<HomePage> {
               //  slider
               Container(
                   width: double.infinity,
-                  height: 200,
+                  height: 180,
                   color: Theme.of(context).scaffoldBackgroundColor,
                   child: Stack(
                     children: [
                       Positioned.fill(
-                          bottom: -80,
+                          bottom: -150,
                           child: Align(
                               alignment: Alignment.center,
                               child: LedIntensitySection()))
