@@ -46,6 +46,7 @@ class _LedLampSectionState extends State<LedLampSection> {
               minHeight: 50,
               minWidth: 60,
               radiusStyle: true,
+              initialLabelIndex: 1,
               cornerRadius: 100,
               animationDuration: 3000,
               inactiveBgColor: Theme.of(context).primaryColorDark,
@@ -58,6 +59,7 @@ class _LedLampSectionState extends State<LedLampSection> {
               ],
               onToggle: (index) {
                 //  0 - on, 1 - off
+                _homeController.setBulbOn(isOn: index == 0);
               },
             ),
           ),

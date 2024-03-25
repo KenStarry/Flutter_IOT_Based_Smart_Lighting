@@ -3,10 +3,13 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   final activeLed = "Led 1".obs;
   final activeLedMode = "Low".obs;
+  final bulbOn = false.obs;
 
   final ledLowLevel = 0.0.obs;
   final ledMediumLevel = 100.0.obs;
   final ledHighLevel = 255.0.obs;
+
+  void setBulbOn({required bool isOn}) => bulbOn.value = isOn;
 
   void setActiveLed({required String led}) => activeLed.value = led;
 

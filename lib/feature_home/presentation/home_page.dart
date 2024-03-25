@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:smart_lighting/feature_home/presentation/components/lamp.dart';
 import 'package:smart_lighting/feature_home/presentation/components/led_intensity_section.dart';
 import 'package:smart_lighting/feature_home/presentation/components/led_lamp_section.dart';
 import 'package:smart_lighting/feature_home/presentation/components/led_toggles_section.dart';
+
+import 'controller/home_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,6 +16,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late final HomeController _homeController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _homeController = Get.find<HomeController>();
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -41,9 +53,12 @@ class _HomePageState extends State<HomePage> {
                       alignment: Alignment.topCenter,
                       child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 54.0),
-                          child: CustomPaint(
-                            size: Size(200, (200 * 1).toDouble()),
-                            painter: const Lamp(bulbOn: true),
+                          child: Obx(
+                            () => CustomPaint(
+                              size: Size(200, (200 * 1).toDouble()),
+                              painter:
+                                  Lamp(bulbOn: _homeController.bulbOn.value),
+                            ),
                           )),
                     ),
                     const Column(
