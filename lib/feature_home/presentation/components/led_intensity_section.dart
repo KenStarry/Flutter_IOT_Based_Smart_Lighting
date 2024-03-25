@@ -82,6 +82,21 @@ class _LedIntensitySectionState extends State<LedIntensitySection> {
                   GestureDetector(
                     onTap: () {
                       //  subtract overall value from either low, medium or high
+                      if (_homeController.activeLedMode.value == "Low" &&
+                          _homeController.ledLowLevel.value > 5) {
+                        _homeController.setIntensityLevels(
+                            low: _homeController.ledLowLevel.value - 5);
+                      } else if (_homeController.activeLedMode.value ==
+                              "Medium" &&
+                          _homeController.ledMediumLevel.value > 5) {
+                        _homeController.setIntensityLevels(
+                            medium: _homeController.ledMediumLevel.value - 5);
+                      } else if (_homeController.activeLedMode.value ==
+                              "High" &&
+                          _homeController.ledHighLevel.value > 5) {
+                        _homeController.setIntensityLevels(
+                            high: _homeController.ledHighLevel.value - 5);
+                      }
                     },
                     child: Container(
                       width: 50,
@@ -130,6 +145,21 @@ class _LedIntensitySectionState extends State<LedIntensitySection> {
                   GestureDetector(
                     onTap: () {
                       //  add overall value from either low, medium or high
+                      if (_homeController.activeLedMode.value == "Low" &&
+                          _homeController.ledLowLevel.value < 250) {
+                        _homeController.setIntensityLevels(
+                            low: _homeController.ledLowLevel.value + 5);
+                      } else if (_homeController.activeLedMode.value ==
+                              "Medium" &&
+                          _homeController.ledMediumLevel.value < 250) {
+                        _homeController.setIntensityLevels(
+                            medium: _homeController.ledMediumLevel.value + 5);
+                      } else if (_homeController.activeLedMode.value ==
+                              "High" &&
+                          _homeController.ledHighLevel.value < 250) {
+                        _homeController.setIntensityLevels(
+                            high: _homeController.ledHighLevel.value + 5);
+                      }
                     },
                     child: Container(
                       width: 50,
