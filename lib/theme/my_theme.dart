@@ -37,7 +37,7 @@ class MyTheme {
                 topLeft: Radius.circular(24), topRight: Radius.circular(24))),
       ),
       useMaterial3: true,
-      fontFamily: 'DMSans',
+      fontFamily: 'Roboto',
       textTheme: const TextTheme(
         bodySmall: TextStyle(
             fontSize: 11, fontWeight: FontWeight.w500, color: textWhite500),

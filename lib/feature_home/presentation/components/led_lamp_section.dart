@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:slider_button/slider_button.dart';
+import 'package:smart_lighting/feature_home/presentation/components/led_mode_card.dart';
 import 'package:smart_lighting/theme/colors.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
@@ -11,6 +13,31 @@ class LedLampSection extends StatefulWidget {
 }
 
 class _LedLampSectionState extends State<LedLampSection> {
+  late final List<Map<String, dynamic>> ledModes;
+
+  @override
+  void initState() {
+    super.initState();
+
+    ledModes = <Map<String, dynamic>>[
+      {
+        "title": "Low",
+        "icon": SvgPicture.asset('assets/images/bulb_low.svg',
+            width: 24, height: 24)
+      },
+      {
+        "title": "Medium",
+        "icon": SvgPicture.asset('assets/images/bulb_medium.svg',
+            width: 24, height: 24)
+      },
+      {
+        "title": "High",
+        "icon": SvgPicture.asset('assets/images/bulb_high.svg',
+            width: 24, height: 24)
+      },
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,10 +65,22 @@ class _LedLampSectionState extends State<LedLampSection> {
                 Icons.power_settings_new_rounded,
                 Icons.power_off_rounded,
               ],
-              onToggle: (index){
+              onToggle: (index) {
                 //  0 - on, 1 - off
               },
             ),
+          ),
+
+          //  led modes
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: ledModes
+                .map((mode) => LedModeCard(
+                    title: mode['title'],
+                    icon: mode['icon'],
+                    active: false,
+                    onTap: () {}))
+                .toList(),
           )
         ],
       ),
