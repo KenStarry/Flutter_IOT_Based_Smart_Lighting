@@ -5,7 +5,7 @@ import 'colors.dart';
 
 class MyTheme {
   /// Dark Theme
-  ThemeData get darkTheme => ThemeData(
+  static ThemeData get darkTheme => ThemeData(
       primaryColor: accent,
       primaryColorDark: bgColorDarkModeAlt,
       scaffoldBackgroundColor: bgColorDarkMode,
