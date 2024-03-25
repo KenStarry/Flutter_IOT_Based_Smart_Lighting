@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:smart_lighting/feature_home/presentation/components/led_bulb.dart';
+
+import 'components/lamp.dart';
+import 'components/lamp_hanger_rope.dart';
+import 'components/lamp_switch.dart';
+import 'components/lamp_switch_rope.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,6 +17,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
           systemNavigationBarColor: Theme.of(context).scaffoldBackgroundColor,
@@ -24,15 +33,18 @@ class _HomePageState extends State<HomePage> {
           width: double.infinity,
           height: double.infinity,
           color: Theme.of(context).scaffoldBackgroundColor,
-              child: Column(
-                children: [
-                  //  toggles
+          child: Column(
+            children: [
+              //  toggles
+              Container(
+                width: double.infinity,
+              )
 
-                  //  light bulb and controls
+              //  lamp
 
-                  //  slider value
-                ],
-              ),
+              //  slider
+            ],
+          ),
         )),
       ),
     );
