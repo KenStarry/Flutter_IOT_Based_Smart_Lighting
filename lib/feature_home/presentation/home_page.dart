@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smart_lighting/feature_home/presentation/components/led_bulb.dart';
+import 'package:smart_lighting/feature_home/presentation/components/led_toggles_section.dart';
 
 import 'components/lamp.dart';
 import 'components/lamp_hanger_rope.dart';
@@ -36,9 +37,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               //  toggles
-              Container(
-                width: double.infinity,
-              )
+              LedTogglesSection()
 
               //  lamp
 
