@@ -15,7 +15,6 @@ class LedIntensitySection extends StatefulWidget {
 }
 
 class _LedIntensitySectionState extends State<LedIntensitySection> {
-
   late final HomeController _homeController;
 
   @override
@@ -36,12 +35,9 @@ class _LedIntensitySectionState extends State<LedIntensitySection> {
           startAngle: 180,
           angleRange: 180,
           customWidths: CustomSliderWidths(
-              trackWidth: 8,
-              progressBarWidth: 8,
-              handlerSize: 8),
+              trackWidth: 8, progressBarWidth: 8, handlerSize: 8),
           customColors: CustomSliderColors(
-              trackColor:
-              Theme.of(context).scaffoldBackgroundColor,
+              trackColor: Theme.of(context).scaffoldBackgroundColor,
               progressBarColors: [
                 textWhite700,
                 gold,
@@ -49,28 +45,87 @@ class _LedIntensitySectionState extends State<LedIntensitySection> {
               hideShadow: true,
               dynamicGradient: true,
               dotColor: textWhite700)),
-      onChange: (value){
+      onChange: (value) {
         print("VALUEEE : ${value}");
       },
       innerWidget: (value) => Container(
         padding: const EdgeInsets.all(8),
         margin: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-            color:
-            Theme.of(context).scaffoldBackgroundColor,
+            color: Theme.of(context).scaffoldBackgroundColor,
             shape: BoxShape.circle),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            const SizedBox(height: 32),
             Text('Intensity', style: Theme.of(context).textTheme.bodySmall),
+
+            const SizedBox(height: 24),
 
             //  controls
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 //  minus
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      border: Border.all(
+                        color: Colors.white.withOpacity(0.2),
+                        width: 1,
+                      )),
+                  child: const Center(
+                    child: Icon(
+                      Icons.remove_rounded,
+                      color: textWhite500,
+                    ),
+                  ),
+                ),
 
                 //  percentage icon
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(150),
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      border: Border.all(
+                        color: Colors.white.withOpacity(0.2),
+                        width: 1,
+                      )),
+                  child: Text('65%',
+                      style: TextStyle(
+                          fontSize:
+                              Theme.of(context).textTheme.titleLarge!.fontSize,
+                          fontWeight: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .fontWeight,
+                          color: Theme.of(context).primaryColor)),
+                ),
 
                 // add icon
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      border: Border.all(
+                        color: Colors.white.withOpacity(0.2),
+                        width: 1,
+                      )),
+                  child: const Center(
+                    child: Icon(
+                      Icons.add_rounded,
+                      color: textWhite500,
+                    ),
+                  ),
+                ),
               ],
             )
           ],
