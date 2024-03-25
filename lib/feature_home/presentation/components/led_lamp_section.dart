@@ -36,8 +36,11 @@ class _LedLampSectionState extends State<LedLampSection> {
               totalSwitches: 2,
               icons: const [
                 Icons.power_settings_new_rounded,
-                Icons.settings_power_rounded,
+                Icons.power_off_rounded,
               ],
+              onToggle: (index){
+                //  0 - on, 1 - off
+              },
             ),
           )
         ],
