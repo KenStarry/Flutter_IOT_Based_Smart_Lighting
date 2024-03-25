@@ -27,7 +27,7 @@ class _LedTogglesSectionState extends State<LedTogglesSection> {
     return Container(
       width: double.infinity,
       height: 100,
-      color: Theme.of(context).scaffoldBackgroundColor,
+      color: Colors.transparent,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
