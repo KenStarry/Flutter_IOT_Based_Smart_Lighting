@@ -44,7 +44,19 @@ class _HomePageState extends State<HomePage> {
               Expanded(child: Text("Hey")),
 
               //  slider
-              LedIntensitySection()
+              Container(
+                  width: double.infinity,
+                  height: 200,
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  child: Stack(
+                    children: [
+                      Positioned.fill(
+                          bottom: -80,
+                          child: Align(
+                              alignment: Alignment.center,
+                              child: LedIntensitySection()))
+                    ],
+                  ))
             ],
           ),
         )),

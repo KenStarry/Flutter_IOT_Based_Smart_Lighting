@@ -47,8 +47,13 @@ class _LedIntensitySectionState extends State<LedIntensitySection> {
             color:
             Theme.of(context).scaffoldBackgroundColor,
             shape: BoxShape.circle),
-        child: Center(
+        child: Column(
+          children: [
+            Text('Intensity', style: Theme.of(context).textTheme.bodySmall),
 
+            //  controls
+
+          ],
         ),
       ),
     );
