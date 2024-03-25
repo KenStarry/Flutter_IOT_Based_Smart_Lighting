@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
             child: Container(
           width: double.infinity,
           height: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           color: Theme.of(context).scaffoldBackgroundColor,
           child: Column(
             children: [

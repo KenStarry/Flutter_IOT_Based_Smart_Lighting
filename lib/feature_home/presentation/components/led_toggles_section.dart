@@ -29,18 +29,23 @@ class _LedTogglesSectionState extends State<LedTogglesSection> {
       height: 100,
       color: Colors.transparent,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: leds
-            .map((led) => Obx(
-                  () => LedPill(
-                      title: led,
-                      isActive: _homeController.activeLed.value == led,
-                      onTap: () {
-                        _homeController.setActiveLed(led: led);
-                      }),
-                ))
-            .toList(),
+        children: [
+          //  timer mode
+
+          //  manual mode
+          Obx(
+            () => LedPill(
+                title: 'Manual Mode',
+                icon: Icon(Icons.auto_mode_rounded),
+                isActive: _homeController.manualMode.value,
+                onTap: () {
+                  _homeController.setManualMode(
+                      manualMode: !_homeController.manualMode.value);
+                }),
+          )
+        ],
       ),
     );
   }
