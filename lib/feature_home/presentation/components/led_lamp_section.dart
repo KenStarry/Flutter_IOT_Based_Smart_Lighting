@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:slider_button/slider_button.dart';
 import 'package:smart_lighting/feature_home/presentation/components/led_mode_card.dart';
+import 'package:smart_lighting/feature_home/presentation/controller/home_controller.dart';
 import 'package:smart_lighting/theme/colors.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
@@ -13,29 +15,18 @@ class LedLampSection extends StatefulWidget {
 }
 
 class _LedLampSectionState extends State<LedLampSection> {
-  late final List<Map<String, dynamic>> ledModes;
+  late final HomeController _homeController;
+  final ledModes = <Map<String, dynamic>>[
+    {"title": "Low", "icon": 'assets/images/bulb_low.svg'},
+    {"title": "Medium", "icon": 'assets/images/bulb_medium.svg'},
+    {"title": "High", "icon": 'assets/images/bulb_high.svg'},
+  ];
 
   @override
   void initState() {
     super.initState();
 
-    ledModes = <Map<String, dynamic>>[
-      {
-        "title": "Low",
-        "icon": SvgPicture.asset('assets/images/bulb_low.svg',
-            width: 24, height: 24, colorFilter: const ColorFilter.mode(textWhite700, BlendMode.srcIn))
-      },
-      {
-        "title": "Medium",
-        "icon": SvgPicture.asset('assets/images/bulb_medium.svg',
-            width: 24, height: 24, colorFilter: const ColorFilter.mode(textWhite700, BlendMode.srcIn))
-      },
-      {
-        "title": "High",
-        "icon": SvgPicture.asset('assets/images/bulb_high.svg',
-            width: 24, height: 24, colorFilter: const ColorFilter.mode(textWhite700, BlendMode.srcIn))
-      },
-    ];
+    _homeController = Get.find<HomeController>();
   }
 
   @override
@@ -71,15 +62,23 @@ class _LedLampSectionState extends State<LedLampSection> {
             ),
           ),
 
+          const SizedBox(height: 16),
+
           //  led modes
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: ledModes
-                .map((mode) => LedModeCard(
-                    title: mode['title'],
-                    icon: mode['icon'],
-                    active: false,
-                    onTap: () {}))
+                .map((mode) => Obx(
+                      () => LedModeCard(
+                          title: mode['title'],
+                          icon: mode['icon'],
+                          active:
+                              _homeController.activeLedMode == mode['title'],
+                          onTap: () {
+                            _homeController.setActiveLedMode(
+                                ledMode: mode['title']);
+                          }),
+                    ))
                 .toList(),
           )
         ],
