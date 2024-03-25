@@ -18,6 +18,17 @@ class HomeController extends GetxController {
     super.onInit();
 
     //  listen to the data
+    ever(ledLowLevel, (lowLevel) async {
+      await updateDataonFirestore(key: 'low', value: lowLevel.ceil());
+    });
+
+    ever(ledMediumLevel, (mediumLevel) async {
+      await updateDataonFirestore(key: 'medium', value: mediumLevel.ceil());
+    });
+
+    ever(ledHighLevel, (highLevel) async {
+      await updateDataonFirestore(key: 'high', value: highLevel.ceil());
+    });
   }
 
   Future<void> updateDataonFirestore(
