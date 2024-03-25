@@ -19,7 +19,7 @@ class LedModeCard extends StatelessWidget {
     return Container(
       width: 100,
       height: 100,
-      color: Colors.red,
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,

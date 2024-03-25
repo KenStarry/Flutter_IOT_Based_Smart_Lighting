@@ -23,17 +23,17 @@ class _LedLampSectionState extends State<LedLampSection> {
       {
         "title": "Low",
         "icon": SvgPicture.asset('assets/images/bulb_low.svg',
-            width: 24, height: 24)
+            width: 24, height: 24, colorFilter: const ColorFilter.mode(textWhite700, BlendMode.srcIn))
       },
       {
         "title": "Medium",
         "icon": SvgPicture.asset('assets/images/bulb_medium.svg',
-            width: 24, height: 24)
+            width: 24, height: 24, colorFilter: const ColorFilter.mode(textWhite700, BlendMode.srcIn))
       },
       {
         "title": "High",
         "icon": SvgPicture.asset('assets/images/bulb_high.svg',
-            width: 24, height: 24)
+            width: 24, height: 24, colorFilter: const ColorFilter.mode(textWhite700, BlendMode.srcIn))
       },
     ];
   }
