@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 import '../../../theme/colors.dart';
+import '../controller/home_controller.dart';
 
 class LedIntensitySection extends StatefulWidget {
   const LedIntensitySection({super.key});
@@ -12,6 +15,15 @@ class LedIntensitySection extends StatefulWidget {
 }
 
 class _LedIntensitySectionState extends State<LedIntensitySection> {
+
+  late final HomeController _homeController;
+
+  @override
+  void initState() {
+    super.initState();
+    _homeController = Get.find<HomeController>();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SleekCircularSlider(
@@ -52,7 +64,15 @@ class _LedIntensitySectionState extends State<LedIntensitySection> {
             Text('Intensity', style: Theme.of(context).textTheme.bodySmall),
 
             //  controls
+            Row(
+              children: [
+                //  minus
 
+                //  percentage icon
+
+                // add icon
+              ],
+            )
           ],
         ),
       ),
