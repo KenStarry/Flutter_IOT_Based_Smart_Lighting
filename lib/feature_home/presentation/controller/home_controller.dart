@@ -13,9 +13,19 @@ class HomeController extends GetxController {
   final ledMediumLevel = 100.0.obs;
   final ledHighLevel = 255.0.obs;
 
+  final customLed1 = 30.0.obs;
+  final customLed2 = 30.0.obs;
+  final customLed3 = 30.0.obs;
+
   @override
   void onInit() {
     super.onInit();
+
+    updateDataonFirestore(key: 'is_manual', value: manualMode.value);
+    updateDataonFirestore(key: 'is_on', value: bulbOn.value);
+    updateDataonFirestore(key: 'custom_led_1', value: customLed1.value);
+    updateDataonFirestore(key: 'custom_led_2', value: customLed2.value);
+    updateDataonFirestore(key: 'custom_led_3', value: customLed3.value);
 
     //  listen to the data
     ever(ledLowLevel, (lowLevel) async {
@@ -28,6 +38,26 @@ class HomeController extends GetxController {
 
     ever(ledHighLevel, (highLevel) async {
       await updateDataonFirestore(key: 'high', value: highLevel.ceil());
+    });
+
+    ever(manualMode, (isManual) async {
+      await updateDataonFirestore(key: 'is_manual', value: isManual);
+    });
+
+    ever(bulbOn, (isOn) async {
+      await updateDataonFirestore(key: 'is_on', value: isOn);
+    });
+
+    ever(customLed1, (value) async {
+      await updateDataonFirestore(key: 'custom_led_1', value: value);
+    });
+
+    ever(customLed2, (value) async {
+      await updateDataonFirestore(key: 'custom_led_2', value: value);
+    });
+
+    ever(customLed3, (value) async {
+      await updateDataonFirestore(key: 'custom_led_3', value: value);
     });
   }
 
