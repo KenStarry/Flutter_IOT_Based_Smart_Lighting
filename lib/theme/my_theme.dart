@@ -10,6 +10,22 @@ class MyTheme {
       primaryColorDark: bgColorDarkModeAlt,
       scaffoldBackgroundColor: bgColorDarkMode,
       iconTheme: const IconThemeData(color: textWhite300),
+      timePickerTheme: TimePickerThemeData(
+          backgroundColor: bgColorDarkMode,
+          cancelButtonStyle: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(bgColorDarkMode),
+              foregroundColor: MaterialStateProperty.all(accent)),
+          confirmButtonStyle: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(bgColorDarkMode),
+              foregroundColor: MaterialStateProperty.all(accent)),
+          dialBackgroundColor: bgColorDarkModeAlt,
+          dialTextColor: Colors.white,
+          hourMinuteColor: bgColorDarkModeAlt,
+          hourMinuteTextColor: Colors.white,
+          dialHandColor: gold,
+          entryModeIconColor: gold,
+          dayPeriodTextColor: accent,
+          dayPeriodBorderSide: BorderSide.none),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: accent, foregroundColor: textWhite700),
       textButtonTheme: TextButtonThemeData(
@@ -36,6 +52,7 @@ class MyTheme {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(24), topRight: Radius.circular(24))),
       ),
+      cardTheme: CardTheme(color: bgColorDarkMode),
       useMaterial3: true,
       fontFamily: 'Roboto',
       textTheme: const TextTheme(

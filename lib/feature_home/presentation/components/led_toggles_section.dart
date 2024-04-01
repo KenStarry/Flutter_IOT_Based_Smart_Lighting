@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_lighting/feature_home/presentation/components/led_pill.dart';
+import 'package:smart_lighting/feature_home/presentation/components/open_bottom_sheet.dart';
+import 'package:smart_lighting/feature_home/presentation/components/time_picker_bottom_sheet.dart';
 import 'package:smart_lighting/feature_home/presentation/controller/home_controller.dart';
 
 class LedTogglesSection extends StatefulWidget {
@@ -33,15 +35,14 @@ class _LedTogglesSectionState extends State<LedTogglesSection> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           //  timer mode
-          Obx(
-                () => LedPill(
-                title: 'Timer',
-                icon: Icon(Icons.timer_rounded),
-                isActive: false,
-                onTap: () {
+          LedPill(
+              title: 'Timer',
+              icon: Icon(Icons.timer_rounded),
+              isActive: false,
+              onTap: () async {
 
-                }),
-          ),
+                openBottomSheet(content: TimePickerBottomSheet(), onComplete: (){});
+              }),
 
           //  manual mode
           Obx(

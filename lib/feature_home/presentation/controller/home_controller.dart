@@ -74,13 +74,16 @@ class HomeController extends GetxController {
 
   Future<void> setSleepTimer({required Duration duration}) async {
     final receivePort = ReceivePort();
-    sleepTimerIsolate.value = await Isolate.spawn(setTimer,
+    final myIsolate = await Isolate.spawn(setTimer,
         SetTimerModel(sendPort: receivePort.sendPort, duration: duration));
+
+    sleepTimerIsolate.value = myIsolate;
 
     receivePort.listen((remainingTime) {
       sleepTimerPeriod.value = remainingTime;
 
       if (remainingTime == 0) {
+        myIsolate.kill(priority: 1);
         sleepTimerIsolate.value = null;
       }
     });
