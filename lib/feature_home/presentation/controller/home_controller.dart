@@ -1,10 +1,16 @@
+import 'dart:isolate';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+
+import '../../../core/timer_isolates.dart';
 
 class HomeController extends GetxController {
   final db = FirebaseFirestore.instance;
 
   final currentDateTime = DateTime.now().obs;
+  final sleepTimerPeriod = 30.obs;
+  final sleepTimerIsolate = Rxn<Isolate>();
 
   final manualMode = false.obs;
   final activeLed = "Led 1".obs;
@@ -65,6 +71,20 @@ class HomeController extends GetxController {
 
   void updateCurrentDateTime({required DateTime date}) =>
       currentDateTime.value = date;
+
+  Future<void> setSleepTimer({required Duration duration}) async {
+    final receivePort = ReceivePort();
+    sleepTimerIsolate.value = await Isolate.spawn(setTimer,
+        SetTimerModel(sendPort: receivePort.sendPort, duration: duration));
+
+    receivePort.listen((remainingTime) {
+      sleepTimerPeriod.value = remainingTime;
+
+      if (remainingTime == 0) {
+        sleepTimerIsolate.value = null;
+      }
+    });
+  }
 
   Future<void> updateDataonFirestore(
       {required String key, required dynamic value}) async {
