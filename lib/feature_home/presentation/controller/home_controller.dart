@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   final db = FirebaseFirestore.instance;
 
+  final currentDateTime = DateTime.now().obs;
+
   final manualMode = false.obs;
   final activeLed = "Led 1".obs;
   final activeLedMode = "Low".obs;
@@ -60,6 +62,9 @@ class HomeController extends GetxController {
       await updateDataonFirestore(key: 'custom_led_3', value: value.ceil());
     });
   }
+
+  void updateCurrentDateTime({required DateTime date}) =>
+      currentDateTime.value = date;
 
   Future<void> updateDataonFirestore(
       {required String key, required dynamic value}) async {

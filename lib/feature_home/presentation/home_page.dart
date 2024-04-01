@@ -27,9 +27,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
           systemNavigationBarColor: Theme.of(context).scaffoldBackgroundColor,

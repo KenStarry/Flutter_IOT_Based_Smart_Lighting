@@ -29,10 +29,19 @@ class _LedTogglesSectionState extends State<LedTogglesSection> {
       height: 100,
       color: Colors.transparent,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           //  timer mode
+          Obx(
+                () => LedPill(
+                title: 'Timer',
+                icon: Icon(Icons.timer_rounded),
+                isActive: false,
+                onTap: () {
+
+                }),
+          ),
 
           //  manual mode
           Obx(
