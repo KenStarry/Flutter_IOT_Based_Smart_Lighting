@@ -22,6 +22,12 @@ class _LedLampSectionState extends State<LedLampSection> {
     {"title": "High", "icon": 'assets/images/bulb_high.svg'},
   ];
 
+  final ledCustomModes = <Map<String, dynamic>>[
+    {"title": "Led 1", "icon": 'assets/images/bulb_low.svg'},
+    {"title": "Led 2", "icon": 'assets/images/bulb_medium.svg'},
+    {"title": "Led 3", "icon": 'assets/images/bulb_high.svg'},
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -67,21 +73,37 @@ class _LedLampSectionState extends State<LedLampSection> {
           const SizedBox(height: 16),
 
           //  led modes
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: ledModes
-                .map((mode) => Obx(
-                      () => LedModeCard(
-                          title: mode['title'],
-                          icon: mode['icon'],
-                          active:
-                              _homeController.activeLedMode == mode['title'],
-                          onTap: () {
-                            _homeController.setActiveLedMode(
-                                ledMode: mode['title']);
-                          }),
-                    ))
-                .toList(),
+          Obx(
+            () => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: _homeController.manualMode.value
+                  ? ledCustomModes
+                      .map((mode) => Obx(
+                            () => LedModeCard(
+                                title: mode['title'],
+                                icon: mode['icon'],
+                                active:
+                                    _homeController.activeLed == mode['title'],
+                                onTap: () {
+                                  _homeController.setActiveLed(
+                                      led: mode['title']);
+                                }),
+                          ))
+                      .toList()
+                  : ledModes
+                      .map((mode) => Obx(
+                            () => LedModeCard(
+                                title: mode['title'],
+                                icon: mode['icon'],
+                                active: _homeController.activeLedMode ==
+                                    mode['title'],
+                                onTap: () {
+                                  _homeController.setActiveLedMode(
+                                      ledMode: mode['title']);
+                                }),
+                          ))
+                      .toList(),
+            ),
           )
         ],
       ),
