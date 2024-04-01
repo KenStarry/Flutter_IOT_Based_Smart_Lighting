@@ -49,15 +49,15 @@ class HomeController extends GetxController {
     });
 
     ever(customLed1, (value) async {
-      await updateDataonFirestore(key: 'custom_led_1', value: value);
+      await updateDataonFirestore(key: 'custom_led_1', value: value.ceil());
     });
 
     ever(customLed2, (value) async {
-      await updateDataonFirestore(key: 'custom_led_2', value: value);
+      await updateDataonFirestore(key: 'custom_led_2', value: value.ceil());
     });
 
     ever(customLed3, (value) async {
-      await updateDataonFirestore(key: 'custom_led_3', value: value);
+      await updateDataonFirestore(key: 'custom_led_3', value: value.ceil());
     });
   }
 
@@ -84,5 +84,11 @@ class HomeController extends GetxController {
     ledLowLevel.value = low ?? ledLowLevel.value;
     ledMediumLevel.value = medium ?? ledMediumLevel.value;
     ledHighLevel.value = high ?? ledHighLevel.value;
+  }
+
+  void setCustomLevels({double? led1, double? led2, double? led3}) {
+    customLed1.value = led1 ?? customLed1.value;
+    customLed2.value = led2 ?? customLed2.value;
+    customLed3.value = led3 ?? customLed3.value;
   }
 }
